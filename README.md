@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Uso de este repositorio
+Para Usar el front se debe hacer lo siguiente:
+
+```bash
+npm install
+```
+
+Luego de que el anterior comando termine sin errores usa 
+```bash
+npm start
+```
+
+con eso debes abrir el puerto que se abrio en la terminal de Visual Studio Code o de el editor que estes usando
+
+Y ya puedes acceder a el front de EDUGRA!!!
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -68,3 +84,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
