@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const Validar = () => {
+
+const Validar = ({ mutacion }) => {
+
     const navigate = useNavigate();
     const [password, setPassword] = useState("");
     const [verifyPassword, setVerifyPassword] = useState("");
@@ -10,7 +12,14 @@ const Validar = () => {
     const handleSubmit = () => {
         if (password === verifyPassword) {
             alert("Contraseña verificada correctamente");
-            navigate("/dashboard");
+            data = {
+                password: password,
+            };
+            mutacion(data);
+            if (mutacion.isSuccess) {
+                alert("Contraseña actualizada correctamente");
+                window.location = `/login`;
+            }
 
         } else {
             alert("Las contraseñas no coinciden");

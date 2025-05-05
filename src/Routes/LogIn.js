@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Container, Avatar } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'universal-cookie'; 
+import Cookies from 'universal-cookie';
+import { SessionInit } from '../Hooks/Auth'; 
+import { useState } from 'react';
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
@@ -10,16 +12,30 @@ const LogIn = () => {
     const navigate = useNavigate();
     let userId = 12
     const cookie = new Cookies();
+    const mutacion = SessionInit();
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí puedes manejar la lógica de inicio de sesión
-        console.log('Email:', email);
-        console.log('Password:', password);
-
-        cookie.set('id', userId, { path: '/' })
-        console.log(cookie.get('id'))
-        navigate('/dashboard');
+        data = {
+            email: email,
+            password: password,
+        };
+        mutacion.mutate(data);
     };
+    if (mutacion.isSuccess) {
+        // 
+        let usuario = mutacion.data.data.Id
+        let token = mutacion.data.data.Token
+
+        // se crea una cookie con el id de usuario 
+        cookie.set('id', usuario, { path: '/' })
+
+        cookie.set('token', token, { path: '/' });
+        // Se envia a la ruta del dashboard con inicio de session
+        
+        window.location = `/dashboard`
+        
+        
+    }
 
     return (
         <Container component="main" maxWidth="xs" color='primary.main'>

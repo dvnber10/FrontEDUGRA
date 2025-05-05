@@ -2,8 +2,10 @@ import React from "react";
 
 import { Box, Typography } from "@mui/material";
 import Validar from "../Components/validar";
+import { ValidarUsuario } from "../Hooks/Auth";
 
 const VerificarUsuario = () => {
+    const mutacion = ValidarUsuario();
     return (
         <Box
             display="flex"
@@ -15,7 +17,7 @@ const VerificarUsuario = () => {
             <Typography variant="h5" gutterBottom>
                 Verificar Usuario
             </Typography>
-            <Validar />
+            <Validar mutacion={mutacion} />
         </Box>
     );
 }

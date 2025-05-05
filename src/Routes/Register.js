@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Container, Avatar } from '@mui/material';
 import { PersonAddOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { NewUSer } from '../Hooks/Auth';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -11,13 +12,36 @@ const Register = () => {
     const [phone, setPhone] = useState('');
     const navigate = useNavigate();
 
+    const mutacion = NewUSer();
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí puedes manejar la lógica de registro
-        console.log('Nombre:', name);
-        console.log('Email:', email);
-        navigate('/validar');
+        // Validar que los campos no estén vacíos
+        if (!email || !name || !surname || !username || !phone) {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+        // Validar el formato del correo electrónico
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Por favor, ingresa un correo electrónico válido.');
+            return;
+        }
+        data = {
+            email: email,
+            name: name,
+            surname: surname,
+            username: username,
+            phone: phone,
+        };
+        mutacion.mutate(data);
+
     };
+    if (mutacion.isSuccess) {
+        // Se envia a la ruta del dashboard con inicio de session
+        alert('Usuario creado correctamente, Por favor verifique su correo y valide su cuenta');
+
+        window.location = `/validar`
+    }
     const volver = (e) => {
         navigate('/');
     };
