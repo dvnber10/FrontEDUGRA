@@ -61,7 +61,7 @@ export default function NavbarDash() {
     }
 
     const handleClose = () => {
-        setAnchorEl(null);
+        navigate('/logout');
     };
 
     return (

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavbarDash from '../Components/NavbarDash';
+import Cookies from 'universal-cookie';
+import { useEffect } from 'react';
 
 const Gestionar = () => {
     const navigate = useNavigate();
@@ -8,11 +10,20 @@ const Gestionar = () => {
     const handleNavigation = (path) => {
         navigate(path);
     };
+    const cookie = new Cookies();
+    const cook = cookie.get('id');
+        
+        useEffect(() => {
+        if (!cook) {
+          navigate('/time-out') // Hay que crear la ruta time out que es el cierre de sesioón
+        }
+      }, [])
 
     return (
+
         <div>
             <NavbarDash />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginTop: '50px', justifyContent: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginTop: '50px', justifyContent: 'space-between', marginLeft: '20px' }}>
                 <button
                     style={buttonStyle}
                     onClick={() => handleNavigation('/subir-documentos')}

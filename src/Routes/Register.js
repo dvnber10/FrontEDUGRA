@@ -16,7 +16,7 @@ const Register = () => {
         // Aquí puedes manejar la lógica de registro
         console.log('Nombre:', name);
         console.log('Email:', email);
-        navigate('/dashboard');
+        navigate('/validar');
     };
     const volver = (e) => {
         navigate('/');

@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import { TextField, Button, Box, Typography, Container, Avatar } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie'; 
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    let userId = 12
+    const cookie = new Cookies();
     const handleSubmit = (e) => {
         e.preventDefault();
         // Aquí puedes manejar la lógica de inicio de sesión
         console.log('Email:', email);
         console.log('Password:', password);
 
-
+        cookie.set('id', userId, { path: '/' })
+        console.log(cookie.get('id'))
         navigate('/dashboard');
     };
 
@@ -59,6 +62,14 @@ const LogIn = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <Button
+                        variant="text"
+                        color="primary"
+                        onClick={() => navigate('/recuperar')}
+                        sx={{ mt: 2 }}
+                    >
+                        Olvide mi cuenta
+                    </Button>
                     <Button
                         type="submit"
                         fullWidth
