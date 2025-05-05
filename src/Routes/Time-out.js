@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -19,9 +20,13 @@ const Logout = () => {
     }, [navigate]); 
 
     return (
-        <div>
-            <h1>Logging out...</h1>
-        </div>
+        <Box
+            display="flex">
+            <Typography
+                variant="h4"
+                component="h1"
+                >Saliendo ...</Typography>
+        </Box>
     );
 };
 

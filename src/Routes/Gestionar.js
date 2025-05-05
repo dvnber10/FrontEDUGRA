@@ -15,9 +15,9 @@ const Gestionar = () => {
         
         useEffect(() => {
         if (!cook) {
-          navigate('/time-out') // Hay que crear la ruta time out que es el cierre de sesioón
+          navigate('/logout'); // Hay que crear la ruta time out que es el cierre de sesioón
         }
-      }, [])
+      }, [cook, navigate])
 
     return (
 

@@ -9,6 +9,11 @@ import VerificarUsuario from "./Routes/VerificarUsuario";
 import ResetPassword from "./Routes/ResetPassword";
 import Recuperar from "./Routes/Recuperar";
 import LogOut from "./Routes/Time-out";
+import Perfil from "./Routes/Perfil";
+import SubirDocumentos from "./Routes/Subirdocumentos";
+import MisDocumentos from "./Routes/MisDocumentos";
+import ForoR from "./Routes/ForoR";
+import MisForos from "./Routes/MisForos";
 
 const App = () => {
   return (
@@ -20,6 +25,11 @@ const App = () => {
         <Route path="/validar" element={<VerificarUsuario />} />
         <Route path="/recuperar" element={<Recuperar />} />
         <Route path="/logout" element={<LogOut />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/subir-documentos" element={<SubirDocumentos />} />
+        <Route path="/mis-documentos" element={<MisDocumentos />} />
+        <Route path="/crear-foro" element={<ForoR />} />
+        <Route path="/mis-foros" element={<MisForos />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/gestionar-documentos" element={<Gestionar />} />

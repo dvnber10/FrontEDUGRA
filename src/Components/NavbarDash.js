@@ -39,7 +39,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -56,12 +55,24 @@ export default function NavbarDash() {
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleGestionarDocs = () => {
-        navigate('/gestionar-documentos');
-    }
 
-    const handleClose = () => {
+    const handleCloseMenu = () => {
+        setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        handleCloseMenu();
         navigate('/logout');
+    };
+
+    const handleGestionarDocs = () => {
+        handleCloseMenu();
+        navigate('/gestionar-documentos');
+    };
+
+    const handlePerfil = () => {
+        handleCloseMenu();
+        navigate('/perfil');
     };
 
     return (
@@ -104,11 +115,13 @@ export default function NavbarDash() {
                             horizontal: 'right',
                         }}
                         open={Boolean(anchorEl)}
-                        onClose={handleClose}
+                        onClose={handleCloseMenu} // solo cierra el menú
                     >
-                        <MenuItem onClick={handleClose}>Mi Perfil</MenuItem>
+                        <MenuItem onClick={handleCloseMenu}>Cerrar Menú</MenuItem>
+                        <MenuItem onClick={handlePerfil}>Mi Perfil</MenuItem>
                         <MenuItem onClick={handleGestionarDocs}>Gestionar Documentos</MenuItem>
-                        <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+                        <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
+                        
                     </Menu>
                 </div>
             </Toolbar>
